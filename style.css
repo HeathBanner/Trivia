@@ -1,0 +1,53 @@
+
+body {
+    background-image: url(imgs/congruent_pentagon.png);
+}
+
+.header {
+    padding: 60px;
+}
+
+.middle {
+    background-image: url(imgs/halftone-yellow.png);
+    height: 500px;
+}
+
+
+
+
+#totally {
+padding: 20px
+}
+
+button {
+    padding: 10px 20px;
+    background: lightseagreen;
+    color: white;
+    font-size: 28px;
+}
+
+#head {
+    text-align: center;
+}
+
+#start {
+    margin: 20px;
+}
+
+#timer {
+    text-align: center;
+}
+
+#question {
+    text-align: center;
+}
+
+#display {
+    text-align: center;
+}
+
+.option {
+    text-align: center;
+    margin: 10px;
+}
+

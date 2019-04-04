@@ -7,8 +7,6 @@ var incorrect = 0
 var unanswered = 0
 var intervalId;
 
-
-
 var test = [
     {optionOne: "<button class='options clear' value='middle'>middle</button>",
     optionTwo: "<button class='options clear' value='index'>index</button>", 
@@ -52,24 +50,27 @@ var questions = [
     answer: "mercury",},
 ]
 
-// for (key in test2) {
-//     value = test2[key]
-//     console.log(value[1])
-// }
-
-
-$("#start").on("click", function(){
+$(document).ready($(document).on("click", "#start", function() {
     $("#start").remove()
-    setTimeout(start, 1000)
-    count()
-    $("#optionOne").append(test[questionIndex].optionOne)
-    $("#optionTwo").append(test[questionIndex].optionTwo)
-    $("#optionThree").append(test[questionIndex].optionThree)
-    $("#optionFour").append(test[questionIndex].optionFour)
-})
+    start()
+    setTimeout(count, 1000)
+    $("#timer").html("<p class='clear'>" + "Time remaining: " + 30 + " seconds" + "</p>")
+    $("#question").html(questions[questionIndex].question)
+    $("#optionOne").html(test[questionIndex].optionOne)
+    $("#optionTwo").html(test[questionIndex].optionTwo)
+    $("#optionThree").html(test[questionIndex].optionThree)
+    $("#optionFour").html(test[questionIndex].optionFour)
+}))
 
 $(document).ready($(document).on("click", "#startOver", function() {
-    location.reload()
+    clearInterval(intervalId);
+    $(".clear").remove()
+    $("#head").append("<button id='start' class='clear'>Start</button>")
+    time = 31;
+    questionIndex = 0
+    correct = 0
+    incorrect = 0
+    unanswered = 0
 }))
 
 $(document).ready($(document).on("click", ".options", function() {
@@ -85,16 +86,18 @@ $(document).ready($(document).on("click", ".options", function() {
         if(questionIndex == test.length) {
             clearInterval(intervalId)
             $(".clear").remove()
-            $("#display").append("<p class'clear'>Correct: " + correct + " </p>")
-            $("#display").append("<p class'clear'>Incorrect: " + incorrect + " </p>")
-            $("#display").append("<p class'clear'>Unanswered: " + unanswered + " </p>")
-            $("#display").append("<button id='startOver'>StartOver</button>")
+            $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
+            $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
+            $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
+            $("#display").append("<button class='clear' id='startOver'>StartOver</button>")
 
 
         } else{
+            clearInterval(intervalId)
             $(".clear").remove()
             $("#display").append("<h1 class='clear'>You guess correct!</h1>")
             setTimeout(next, 2000)
+            setTimeout(start, 2000)
         }
         
     } else if (guess !== questions[questionIndex].answer){
@@ -103,29 +106,40 @@ $(document).ready($(document).on("click", ".options", function() {
         if(questionIndex == test.length) {
             clearInterval(intervalId)
             $(".clear").remove()
-            $("#display").append("<p class'clear'>Correct: " + correct + " </p>")
-            $("#display").append("<p class'clear'>Incorrect: " + incorrect + " </p>")
-            $("#display").append("<p class'clear'>Unanswered: " + unanswered + " </p>")
-            $("#display").append("<button id='startOver'>StartOver</button>")
+            $("#display").append("<h1 class='clear'>You guessed wrong!</h1>")
+            setTimeout( function() {
+                $(".clear").remove()
+                $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
+                $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
+                $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
+                $("#display").append("<button class='clear' id='startOver'>StartOver</button>")    
+            }, 2000)
         } else {
+            clearInterval(intervalId);
             $(".clear").remove()
             $("#display").append("<h1 class='clear'>You guessed wrong!</h1>")
             setTimeout(next, 2000)
+            setTimeout(start, 1000)
         }
-    }else if(time == 0){
+    }else if(parseInt(time) === 0){
         unanswered++
         questionIndex++
         if(questionIndex == test.length) {
             clearInterval(intervalId)
             $(".clear").remove()
-            $("#display").append("<p class'clear'>Correct: " + correct + " </p>")
-            $("#display").append("<p class'clear'>Incorrect: " + incorrect + " </p>")
-            $("#display").append("<p class'clear'>Unanswered: " + unanswered + " </p>")
-            $("#display").append("<button id='startOver'>StartOver</button>")
+            setTimeout( function() {
+                $(".clear").remove()
+                $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
+                $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
+                $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
+                $("#display").append("<button class='clear' id='startOver'>StartOver</button>")    
+            }, 2000)
         } else {
+            clearInterval(intervalId)
             $(".clear").remove()
             $("#display").append("<h1 class='clear'>You ran out of time!</h1>")
-            setTimeout(next, 3000)
+            setTimeout(next, 2000)
+            setTimeout(start, 2000)
         }
        
     }
@@ -138,6 +152,28 @@ function start() {
 function count() {
     time--
     $("#timer").html("<p class='clear'>" + "Time remaining: " + time + " seconds" + "</p>")
+    if (time < 1){
+        unanswered++
+        questionIndex++
+        if(questionIndex == test.length) {
+            clearInterval(intervalId)
+            $(".clear").remove()
+            $("#display").append("<h1 class='clear'>You ran out of time!</h1>")
+            setTimeout( function() {
+                $(".clear").remove()
+                $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
+                $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
+                $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
+                $("#display").append("<button class='clear' id='startOver'>StartOver</button>")    
+            }, 2000)
+        }else {
+            clearInterval(intervalId)
+            $(".clear").remove()
+            $("#display").append("<h1 class='clear'>You ran out of time!</h1>")
+            setTimeout(next, 2000)
+            setTimeout(start, 2000)
+        }
+    }
 }
 
 function questionUpdate() {
@@ -151,15 +187,14 @@ function questionUpdate() {
 }
 
 function next() {
-    clearInterval(intervalId);
+    $(".clear").remove()
     time = 31
-    intervalId = setInterval(count, 1000)
     time--
     $("#timer").html("<p class='clear'>" + "Time remaining: " + time + " seconds" + "</p>")
-    $(".clear").remove()
     $("#question").html(questions[questionIndex].question)
     
     $("#optionOne").html(test[questionIndex].optionOne)
     $("#optionTwo").html(test[questionIndex].optionTwo)
     $("#optionThree").html(test[questionIndex].optionThree)
-    $("#optionFour").html(test[questionIndex].optionFour)}
+    $("#optionFour").html(test[questionIndex].optionFour)
+}

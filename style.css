@@ -20,7 +20,8 @@ padding: 20px
 }
 
 button {
-    padding: 10px 20px;
+    width: 150px;
+    padding: 10px 0px;
     background: lightseagreen;
     color: white;
     font-size: 28px;
@@ -31,7 +32,7 @@ button {
 }
 
 #start {
-    margin: 20px;
+    margin: 120px;
 }
 
 #timer {

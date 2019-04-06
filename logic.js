@@ -31,7 +31,58 @@ var test = [
     {optionOne: "<button class='options clear' value='mercury'>Mercury</button>",
     optionTwo: "<button class='options clear' value='jupiter'>Jupiter</button>", 
     optionThree: "<button id='yellow' class='options  clear' value='venus'>Venus</button>", 
-    optionFour: "<button id='blue' class='options clear' value='mars'>Mars</button>",},]
+    optionFour: "<button id='blue' class='options clear' value='mars'>Mars</button>",},
+
+    {optionOne: "<button class='options big clear' value='caspian'>Caspian Sea</button>",
+    optionTwo: "<button class='options big clear' value='victoria'>Lake Victoria</button>", 
+    optionThree: "<button id='yellow' class='options big clear' value='baikal'>Lake Baikal</button>", 
+    optionFour: "<button id='blue' class='options big clear' value='superior'>Lake Superior</button>",},
+
+    {optionOne: "<button class='options big clear' value='australia'>Australia</button>",
+    optionTwo: "<button class='options big clear' value='greenland'>Greenland</button>", 
+    optionThree: "<button id='yellow' class='options big clear' value='japan'>Japan</button>", 
+    optionFour: "<button id='blue' class='options big clear' value='madagascar'>Madagascar</button>",},
+
+    {optionOne: "<button class='options clear' value='india'>India</button>",
+    optionTwo: "<button class='options clear' value='russia'>Russia</button>", 
+    optionThree: "<button id='yellow' class='options  clear' value='chile'>Chile</button>", 
+    optionFour: "<button id='blue' class='options clear' value='moon'>Moon</button>",},
+
+    {optionOne: "<button class='options gardens clear' value='babylon'>Hanging Gardens of Babylon</button>",
+    optionTwo: "<button class='options gardens clear' value='monet'>Claude Monet's Garden</button>", 
+    optionThree: "<button id='yellow' class='options gardens clear' value='nooch'>Nong Nooch Tropical Botanical Garden</button>", 
+    optionFour: "<button id='blue' class='options gardens clear' value='chateu'>Gardens of Chateau de Villandry</button>",},
+
+    {optionOne: "<button class='options clear' value='halogens'>Halogens</button>",
+    optionTwo: "<button class='options clear' value='rose'>Roses</button>", 
+    optionThree: "<button id='yellow' class='options  clear' value='tulips'>Tulips</button>", 
+    optionFour: "<button id='blue' class='options clear' value='hyacinth'>Hyacinth</button>",},
+
+    {optionOne: "<button class='options big clear' value='pure'>Pure resonance</button>",
+    optionTwo: "<button class='options big clear' value='softly'>To be played softly</button>", 
+    optionThree: "<button id='yellow' class='options big clear' value='sound'>Math in sound</button>", 
+    optionFour: "<button id='blue' class='options big clear' value='harmony'>Play on harmony</button>",},
+
+    {optionOne: "<button class='options big clear' value='january'>January 1st 1999</button>",
+    optionTwo: "<button class='options big clear' value='may'>May 12th 1954</button>", 
+    optionThree: "<button id='yellow' class='options big clear' value='august'>August 23rd 1988</button>", 
+    optionFour: "<button id='blue' class='options big clear' value='december'>December 5th 1976</button>",},
+
+    {optionOne: "<button class='options big clear' value='sutra'>The Diamond Sutra</button>",
+    optionTwo: "<button class='options big clear' value='bible'>The Bible</button>", 
+    optionThree: "<button id='yellow' class='options big clear' value='quran'>The Quran</button>", 
+    optionFour: "<button id='blue' class='options big clear' value='codex'>The Madrid Codex</button>",},
+
+    {optionOne: "<button class='options clear' value='mars'>Mars</button>",
+    optionTwo: "<button class='options clear' value='jupiter'>Jupiter</button>", 
+    optionThree: "<button id='yellow' class='options  clear' value='neptune'>Neptune</button>", 
+    optionFour: "<button id='blue' class='options clear' value='uranus'>Uranus</button>",},
+
+    {optionOne: "<button class='options adventurer clear' value='cook'>Captain James Cook</button>",
+    optionTwo: "<button class='options adventurer clear' value='polo'>Marco Polo</button>", 
+    optionThree: "<button id='yellow' class='options adventurer clear' value='magellan'>Ferdinand Magellan</button>", 
+    optionFour: "<button id='blue' class='options adventurer clear' value='lc'>Lewis & Clark</button>",},
+]
 
 var questions = [
     {question: "<p class='q clear'>Which nail grows the fastest?</p>",
@@ -48,6 +99,36 @@ var questions = [
     
     {question: "<p class='q clear'>Which planet is nearest the sun?</p>",
     answer: "mercury",},
+
+    {question: "<p class='q clear'>What is the largest freshwater lake in the world?</p>",
+    answer: "superior",},
+
+    {question: "<p class='q clear'>What is the world's biggest island?</p>",
+    answer: "greenland",},
+
+    {question: "<p class='q clear'>Where would you find the Sea of Tranquility?</p>",
+    answer: "moon",},
+
+    {question: "<p class='q clear'>Which garden is considered to be among the Seven Wonders of the Ancient World?</p>",
+    answer: "babylon",},
+
+    {question: "<p class='q clear'>Which kind of bulbs were once exchanged as a form of currency?</p>",
+    answer: "tulips",},
+
+    {question: "<p class='q clear'>What does the term 'piano' mean?</p>",
+    answer: "softly",},
+
+    {question: "<p class='q clear'>When was the euro introduced as legal currency on the world market?</p>",
+    answer: "january",},
+
+    {question: "<p class='q clear'>What is the oldest surviving printed book in the world?</p>",
+    answer: "sutra",},
+
+    {question: "<p class='q clear'>What was the first planet to be discovered using the telescope, in 1781?</p>",
+    answer: "uranus",},
+
+    {question: "<p class='q clear'>Who, after anchoring off Hawaii in 1779, was mistaken for the god Lono?</p>",
+    answer: "cook",},
 ]
 
 $(document).ready($(document).on("click", "#start", function() {
@@ -83,19 +164,13 @@ $(document).ready($(document).on("click", ".options", function() {
         console.log("yes")
         correct++
         questionIndex++
+        clearInterval(intervalId)
+        $(".clear").remove()
+        $("#display").append("<h1 class='clear'>You guess correct!</h1>")
         if(questionIndex == test.length) {
-            clearInterval(intervalId)
-            $(".clear").remove()
-            $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
-            $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
-            $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
-            $("#display").append("<button class='clear' id='startOver'>StartOver</button>")
-
+            setTimeout(gameover, 2000)
 
         } else{
-            clearInterval(intervalId)
-            $(".clear").remove()
-            $("#display").append("<h1 class='clear'>You guess correct!</h1>")
             setTimeout(next, 2000)
             setTimeout(start, 2000)
         }
@@ -103,41 +178,24 @@ $(document).ready($(document).on("click", ".options", function() {
     } else if (guess !== questions[questionIndex].answer){
         incorrect++
         questionIndex++
+        clearInterval(intervalId);
+        $(".clear").remove()
+        $("#display").append("<h1 class='clear'>You guessed wrong!</h1>")
         if(questionIndex == test.length) {
-            clearInterval(intervalId)
-            $(".clear").remove()
-            $("#display").append("<h1 class='clear'>You guessed wrong!</h1>")
-            setTimeout( function() {
-                $(".clear").remove()
-                $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
-                $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
-                $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
-                $("#display").append("<button class='clear' id='startOver'>StartOver</button>")    
-            }, 2000)
+            setTimeout(gameover, 2000)
         } else {
-            clearInterval(intervalId);
-            $(".clear").remove()
-            $("#display").append("<h1 class='clear'>You guessed wrong!</h1>")
             setTimeout(next, 2000)
             setTimeout(start, 1000)
         }
     }else if(parseInt(time) === 0){
         unanswered++
         questionIndex++
+        clearInterval(intervalId)
+        $(".clear").remove()
+        $("#display").append("<h1 class='clear'>You ran out of time!</h1>")
         if(questionIndex == test.length) {
-            clearInterval(intervalId)
-            $(".clear").remove()
-            setTimeout( function() {
-                $(".clear").remove()
-                $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
-                $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
-                $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
-                $("#display").append("<button class='clear' id='startOver'>StartOver</button>")    
-            }, 2000)
+            setTimeout(gameover, 2000)
         } else {
-            clearInterval(intervalId)
-            $(".clear").remove()
-            $("#display").append("<h1 class='clear'>You ran out of time!</h1>")
             setTimeout(next, 2000)
             setTimeout(start, 2000)
         }
@@ -197,4 +255,13 @@ function next() {
     $("#optionTwo").html(test[questionIndex].optionTwo)
     $("#optionThree").html(test[questionIndex].optionThree)
     $("#optionFour").html(test[questionIndex].optionFour)
+}
+
+function gameover() {
+    clearInterval(intervalId)
+    $(".clear").remove()
+    $("#display").append("<p class='clear'>Correct: " + correct + " </p>")
+    $("#display").append("<p class='clear'>Incorrect: " + incorrect + " </p>")
+    $("#display").append("<p class='clear'>Unanswered: " + unanswered + " </p>")
+    $("#display").append("<button class='clear' id='startOver'>StartOver</button>")
 }

@@ -1,5 +1,4 @@
 
-
 var time = 31;
 var questionIndex = 0
 var correct = 0
@@ -8,10 +7,10 @@ var unanswered = 0
 var intervalId;
 
 var test = [
-    {optionOne: "<button class='options clear' value='middle'>middle</button>",
-    optionTwo: "<button class='options clear' value='index'>index</button>", 
-    optionThree: "<button class='options  clear' value='ring'>ring</button>", 
-    optionFour: "<button class='options clear' value='pink'>pinky</button>",},
+    {optionOne: "<button class='options clear' value='middle'>Middle</button>",
+    optionTwo: "<button class='options clear' value='index'>Index</button>", 
+    optionThree: "<button class='options  clear' value='ring'>Ring</button>", 
+    optionFour: "<button class='options clear' value='pink'>Pinky</button>",},
     
     {optionOne: "<button class='options clear' value='vertebrae'>Vertebrae</button>",
     optionTwo: "<button class='options clear' value='toe'>Toe</button>",
@@ -30,61 +29,62 @@ var test = [
 
     {optionOne: "<button class='options clear' value='mercury'>Mercury</button>",
     optionTwo: "<button class='options clear' value='jupiter'>Jupiter</button>", 
-    optionThree: "<button id='yellow' class='options  clear' value='venus'>Venus</button>", 
-    optionFour: "<button id='blue' class='options clear' value='mars'>Mars</button>",},
+    optionThree: "<button class='options  clear' value='venus'>Venus</button>", 
+    optionFour: "<button class='options clear' value='mars'>Mars</button>",},
 
     {optionOne: "<button class='options big clear' value='caspian'>Caspian Sea</button>",
     optionTwo: "<button class='options big clear' value='victoria'>Lake Victoria</button>", 
-    optionThree: "<button id='yellow' class='options big clear' value='baikal'>Lake Baikal</button>", 
-    optionFour: "<button id='blue' class='options big clear' value='superior'>Lake Superior</button>",},
+    optionThree: "<button class='options big clear' value='baikal'>Lake Baikal</button>", 
+    optionFour: "<button class='options big clear' value='superior'>Lake Superior</button>",},
 
     {optionOne: "<button class='options big clear' value='australia'>Australia</button>",
     optionTwo: "<button class='options big clear' value='greenland'>Greenland</button>", 
-    optionThree: "<button id='yellow' class='options big clear' value='japan'>Japan</button>", 
-    optionFour: "<button id='blue' class='options big clear' value='madagascar'>Madagascar</button>",},
+    optionThree: "<button class='options big clear' value='japan'>Japan</button>", 
+    optionFour: "<button class='options big clear' value='madagascar'>Madagascar</button>",},
 
     {optionOne: "<button class='options clear' value='india'>India</button>",
     optionTwo: "<button class='options clear' value='russia'>Russia</button>", 
-    optionThree: "<button id='yellow' class='options  clear' value='chile'>Chile</button>", 
-    optionFour: "<button id='blue' class='options clear' value='moon'>Moon</button>",},
+    optionThree: "<button class='options  clear' value='chile'>Chile</button>", 
+    optionFour: "<button class='options clear' value='moon'>Moon</button>",},
 
     {optionOne: "<button class='options gardens clear' value='babylon'>Hanging Gardens of Babylon</button>",
     optionTwo: "<button class='options gardens clear' value='monet'>Claude Monet's Garden</button>", 
-    optionThree: "<button id='yellow' class='options gardens clear' value='nooch'>Nong Nooch Tropical Botanical Garden</button>", 
-    optionFour: "<button id='blue' class='options gardens clear' value='chateu'>Gardens of Chateau de Villandry</button>",},
+    optionThree: "<button class='options gardens clear' value='nooch'>Nong Nooch Tropical Botanical Garden</button>", 
+    optionFour: "<button class='options gardens clear' value='chateu'>Gardens of Chateau de Villandry</button>",},
 
     {optionOne: "<button class='options clear' value='halogens'>Halogens</button>",
     optionTwo: "<button class='options clear' value='rose'>Roses</button>", 
-    optionThree: "<button id='yellow' class='options  clear' value='tulips'>Tulips</button>", 
-    optionFour: "<button id='blue' class='options clear' value='hyacinth'>Hyacinth</button>",},
+    optionThree: "<button class='options  clear' value='tulips'>Tulips</button>", 
+    optionFour: "<button class='options clear' value='hyacinth'>Hyacinth</button>",},
 
     {optionOne: "<button class='options big clear' value='pure'>Pure resonance</button>",
     optionTwo: "<button class='options big clear' value='softly'>To be played softly</button>", 
-    optionThree: "<button id='yellow' class='options big clear' value='sound'>Math in sound</button>", 
-    optionFour: "<button id='blue' class='options big clear' value='harmony'>Play on harmony</button>",},
+    optionThree: "<button class='options big clear' value='sound'>Math in sound</button>", 
+    optionFour: "<button class='options big clear' value='harmony'>Play on harmony</button>",},
 
     {optionOne: "<button class='options big clear' value='january'>January 1st 1999</button>",
     optionTwo: "<button class='options big clear' value='may'>May 12th 1954</button>", 
-    optionThree: "<button id='yellow' class='options big clear' value='august'>August 23rd 1988</button>", 
-    optionFour: "<button id='blue' class='options big clear' value='december'>December 5th 1976</button>",},
+    optionThree: "<button class='options big clear' value='august'>August 23rd 1988</button>", 
+    optionFour: "<button class='options big clear' value='december'>December 5th 1976</button>",},
 
     {optionOne: "<button class='options big clear' value='sutra'>The Diamond Sutra</button>",
     optionTwo: "<button class='options big clear' value='bible'>The Bible</button>", 
-    optionThree: "<button id='yellow' class='options big clear' value='quran'>The Quran</button>", 
-    optionFour: "<button id='blue' class='options big clear' value='codex'>The Madrid Codex</button>",},
+    optionThree: "<button class='options big clear' value='quran'>The Quran</button>", 
+    optionFour: "<button class='options big clear' value='codex'>The Madrid Codex</button>",},
 
     {optionOne: "<button class='options clear' value='mars'>Mars</button>",
     optionTwo: "<button class='options clear' value='jupiter'>Jupiter</button>", 
-    optionThree: "<button id='yellow' class='options  clear' value='neptune'>Neptune</button>", 
-    optionFour: "<button id='blue' class='options clear' value='uranus'>Uranus</button>",},
+    optionThree: "<button class='options  clear' value='neptune'>Neptune</button>", 
+    optionFour: "<button class='options clear' value='uranus'>Uranus</button>",},
 
     {optionOne: "<button class='options adventurer clear' value='cook'>Captain James Cook</button>",
     optionTwo: "<button class='options adventurer clear' value='polo'>Marco Polo</button>", 
-    optionThree: "<button id='yellow' class='options adventurer clear' value='magellan'>Ferdinand Magellan</button>", 
-    optionFour: "<button id='blue' class='options adventurer clear' value='lc'>Lewis & Clark</button>",},
+    optionThree: "<button class='options adventurer clear' value='magellan'>Ferdinand Magellan</button>", 
+    optionFour: "<button class='options adventurer clear' value='lc'>Lewis & Clark</button>",},
 ]
 
 var questions = [
+    
     {question: "<p class='q clear'>Which nail grows the fastest?</p>",
     answer: "middle",},
     
@@ -137,6 +137,7 @@ $(document).ready($(document).on("click", "#start", function() {
     setTimeout(count, 1000)
     $("#timer").html("<p class='clear'>" + "Time remaining: " + 30 + " seconds" + "</p>")
     $("#question").html(questions[questionIndex].question)
+    
     $("#optionOne").html(test[questionIndex].optionOne)
     $("#optionTwo").html(test[questionIndex].optionTwo)
     $("#optionThree").html(test[questionIndex].optionThree)
@@ -169,13 +170,12 @@ $(document).ready($(document).on("click", ".options", function() {
         $("#display").append("<h1 class='clear'>You guess correct!</h1>")
         if(questionIndex == test.length) {
             setTimeout(gameover, 2000)
-
-        } else{
+        }else {
             setTimeout(next, 2000)
             setTimeout(start, 2000)
         }
         
-    } else if (guess !== questions[questionIndex].answer){
+    }else if (guess !== questions[questionIndex].answer) {
         incorrect++
         questionIndex++
         clearInterval(intervalId);
@@ -183,11 +183,11 @@ $(document).ready($(document).on("click", ".options", function() {
         $("#display").append("<h1 class='clear'>You guessed wrong!</h1>")
         if(questionIndex == test.length) {
             setTimeout(gameover, 2000)
-        } else {
+        }else {
             setTimeout(next, 2000)
             setTimeout(start, 1000)
         }
-    }else if(parseInt(time) === 0){
+    }else if(parseInt(time) === 0) {
         unanswered++
         questionIndex++
         clearInterval(intervalId)
@@ -195,11 +195,10 @@ $(document).ready($(document).on("click", ".options", function() {
         $("#display").append("<h1 class='clear'>You ran out of time!</h1>")
         if(questionIndex == test.length) {
             setTimeout(gameover, 2000)
-        } else {
+        }else {
             setTimeout(next, 2000)
             setTimeout(start, 2000)
         }
-       
     }
 }))
 
@@ -210,7 +209,7 @@ function start() {
 function count() {
     time--
     $("#timer").html("<p class='clear'>" + "Time remaining: " + time + " seconds" + "</p>")
-    if (time < 1){
+    if (time < 1) {
         unanswered++
         questionIndex++
         if(questionIndex == test.length) {

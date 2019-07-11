@@ -167,7 +167,7 @@ $(document).ready($(document).on("click", ".options", function() {
         questionIndex++
         clearInterval(intervalId)
         $(".clear").remove()
-        $("#display").append("<h1 class='clear'>You guess correct!</h1>")
+        $("#display").append("<h1 class='clear'>You guessed correctly!</h1>")
         if(questionIndex == test.length) {
             setTimeout(gameover, 2000)
         }else {

@@ -1,5 +1,7 @@
 # Trivia
 
+[Click to play!](https://heathbanner.github.io/Trivia/)
+
 The trivia page will load and prompt the user to click "Start". 
 
 Once the game starts, you'll have 30 second for each question. 

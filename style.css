@@ -12,9 +12,6 @@ body {
     height: 500px;
 }
 
-
-
-
 #totally {
 padding: 20px
 }
@@ -22,9 +19,13 @@ padding: 20px
 button {
     width: 150px;
     padding: 10px 0px;
-    background: lightseagreen;
+    background: linear-gradient(45deg, #25cfc7 30%, #24c9c2 90%);
     color: white;
     font-size: 28px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #2af0e6 30%, #28e0d8 90%);
 }
 
 #head {
